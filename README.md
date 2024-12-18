@@ -27,11 +27,11 @@ venv\Scripts\deactivate.bat
 fastapi dev main.py
 ```
 
-# Linux  (WIP)
+# Linux
 
 activate
 ```bash
-source venv/bin/activate
+source setup
 ```
 
 run dev
