@@ -1,23 +1,26 @@
 # Windows
 ## Setup
 
-use python 3.12
+Note: use python 3.12
+
+If venv directory does not exist:
 ```console
-python -m venv venv
+$ python -m venv venv
 ```
 
+### Activate
 ```console
-venv\Scripts\activate.bat
+$ venv\Scripts\activate.bat
 ```
 
-in the venv:
+* if requirements.txt has changed:
 ```console
-pip install -r requirements.txt
+(venv) $ python -m pip install -r requirements.txt
 ```
 
 ### Deactivate
 ```console
-venv\Scripts\deactivate.bat
+$ venv\Scripts\deactivate.bat
 ```
 
 ## Run
