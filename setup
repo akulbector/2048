@@ -2,36 +2,39 @@
 
 #Check if Python 3.12 is installed
 if ! command -v python3.12 &> /dev/null; then
-    echo "Python 3.12 is not installed"
-    echo "Please install with: sudo apt install python3.12"
-    echo "curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12"
-    echo "sudo apt-get install python3.12-venv"
-    exit 1
-fi
-
-echo "Checking if venv exists..."
-
-# Check if venv directory exists
-if [ -d "venv" ]; then
-    echo "Great! Virtual environment exists"
+        echo "Python 3.12 is not installed"
+        echo "Please install with: "
+        echo "sudo apt install python3.12"
+        echo "curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12"
+        echo "sudo apt-get install python3.12-venv"
 else
-    echo "venv doesn't exist: Creating Python virtual environment..."
-    python3.12 -m venv venv
+        echo "Checking if venv exists..."
+
+        # Check if venv directory exists
+        if [ -d "venv" ]; then
+                echo "Great! Virtual environment exists"
+        else
+                echo "venv doesn't exist: Creating Python virtual environment..."
+                python3.12 -m venv venv
+        fi
+
+        # Activate virtual environment
+        source venv/bin/activate
+
+        echo "Virtual environment activated."
+
+        # Install requirements if requirements.txt exists
+        if [ -f "requirements.txt" ]; then
+                echo "Installing requirements from requirements.txt..."
+                ./venv/bin/pip3.12 install -r requirements.txt
+                echo "Requirements installed successfully."
+        else
+                echo "Warning: requirements.txt not found."
+        fi
+
+        echo "Setup complete! Virtual environment is now active."
+        echo "To deactivate the virtual environment, type 'deactivate'"
 fi
 
-# Activate virtual environment
-source venv/bin/activate
 
-echo "Virtual environment activated."
 
-# Install requirements if requirements.txt exists
-if [ -f "requirements.txt" ]; then
-    echo "Installing requirements from requirements.txt..."
-    ./venv/bin/pip3.12 install -r requirements.txt
-    echo "Requirements installed successfully."
-else
-    echo "Warning: requirements.txt not found."
-fi
-
-echo "Setup complete! Virtual environment is now active."
-echo "To deactivate the virtual environment, type 'deactivate'"
