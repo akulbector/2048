@@ -4,8 +4,9 @@
 if ! command -v python3.12 &> /dev/null; then
         echo "Python 3.12 is not installed"
         echo "Please install with: "
+        echo "sudo add-apt-repository ppa:deadsnakes/ppa"
         echo "sudo apt install python3.12"
-        echo "curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12"
+        echo "not sure if required: curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12"
         echo "sudo apt-get install python3.12-venv"
 else
         echo "Checking if venv exists..."
